@@ -1,0 +1,32 @@
+version: '2'
+plugins:
+- name: py
+  wasm:
+    url: https://downloads.sqlc.dev/plugin/sqlc-gen-python_1.2.0.wasm
+    sha256: a6c5d174c407007c3717eea36ff0882744346e6ba991f92f71d6ab2895204c0e
+
+sql:
+# FOR ds SCHEMA TABLES
+- schema: "./db/migrations/*_DS.*.sql"
+  queries: "./db/queries/ds"
+  engine: postgresql
+  codegen:
+  - out: src/database/schemas/ds
+    plugin: py
+    options:
+      package: src.database.schemas.ds
+      emit_sync_querier: false
+      emit_async_querier: true
+      query_parameter_limit: 3
+# FOR LOGS SCHEMA TABLES
+- schema: "./db/migrations/*_LOGS.*.sql"
+  queries: "./db/queries/logs"
+  engine: postgresql
+  codegen:
+  - out: src/database/schemas/logs
+    plugin: py
+    options:
+      package: src.database.schemas.logs
+      emit_sync_querier: false
+      emit_async_querier: true
+      query_parameter_limit: 3

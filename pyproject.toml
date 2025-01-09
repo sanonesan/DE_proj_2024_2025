@@ -1,0 +1,15 @@
+[project]
+name = "neoflex_DE_proj_2024_2025"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "sanonesan", email = "ezcudze@gmail.com"},
+]
+dependencies = ["sqlalchemy>=2.0.36", "numpy>=2.2.1", "fastapi>=0.115.6", "pydantic>=2.10.4", "uvicorn>=0.34.0", "pydantic-settings>=2.7.0", "asyncpg>=0.30.0", "orjson>=3.10.12", "pylint>=3.3.3", "psycopg2>=2.9.10"]
+requires-python = "==3.12.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
